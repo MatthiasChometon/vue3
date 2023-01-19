@@ -5,7 +5,12 @@ import { DefaultApolloClient } from '@vue/apollo-composable'
 import { ApolloClient, InMemoryCache } from '@apollo/client/core'
 import { setContext } from '@apollo/client/link/context'
 import { createUploadLink } from 'apollo-upload-client'
+import { Dialog, Notify, Quasar } from 'quasar'
 import App from './App.vue'
+
+import '@quasar/extras/material-icons/material-icons.css'
+import 'quasar/src/css/index.sass'
+import '@quasar/extras/roboto-font/roboto-font.css'
 
 const routes = setupLayouts(generatedRoutes)
 const cache = new InMemoryCache({
@@ -39,6 +44,9 @@ export const createApp = ViteSSG(
   { routes, base: import.meta.env.BASE_URL },
   (ctx) => {
     ctx.app.provide(DefaultApolloClient, apolloClient)
+    ctx.app.use(Quasar, {
+      plugins: { Notify, Dialog },
+    })
     // install all modules under `modules/`
     Object.values(import.meta.globEager('./common/modules/*.ts')).forEach(i => i.install?.(ctx))
   },

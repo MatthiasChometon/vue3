@@ -9,6 +9,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import { VitePWA } from 'vite-plugin-pwa'
 import VueI18n from '@intlify/vite-plugin-vue-i18n'
 import Inspect from 'vite-plugin-inspect'
+import { quasar, transformAssetUrls } from '@quasar/vite-plugin'
 
 export default defineConfig({
   resolve: {
@@ -21,6 +22,7 @@ export default defineConfig({
     Vue({
       include: [/\.vue$/],
       reactivityTransform: true,
+      template: { transformAssetUrls },
     }),
 
     // https://github.com/hannoeru/vite-plugin-pages
@@ -34,6 +36,10 @@ export default defineConfig({
     // https://github.com/JohnCampionJr/vite-plugin-vue-layouts
     Layouts({
       layoutsDirs: 'src/common/layouts',
+    }),
+
+    quasar({
+      sassVariables: 'src/common/styles/quasar.sass',
     }),
 
     // https://github.com/antfu/unplugin-auto-import
