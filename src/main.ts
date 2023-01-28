@@ -10,7 +10,7 @@ import App from './App.vue'
 
 import '@quasar/extras/material-icons/material-icons.css'
 import 'quasar/src/css/index.sass'
-import '@quasar/extras/roboto-font/roboto-font.css'
+import 'uno.css'
 
 const routes = setupLayouts(generatedRoutes)
 const cache = new InMemoryCache({
