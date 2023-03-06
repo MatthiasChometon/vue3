@@ -10,7 +10,6 @@ import { VitePWA } from 'vite-plugin-pwa'
 import VueI18n from '@intlify/vite-plugin-vue-i18n'
 import Inspect from 'vite-plugin-inspect'
 import { quasar, transformAssetUrls } from '@quasar/vite-plugin'
-import Unocss from 'unocss/vite'
 
 export default defineConfig({
   resolve: {
@@ -33,8 +32,6 @@ export default defineConfig({
         { dir: 'src/**/pages', baseRoute: '' },
       ],
     }),
-
-    Unocss(),
 
     // https://github.com/JohnCampionJr/vite-plugin-vue-layouts
     Layouts({
